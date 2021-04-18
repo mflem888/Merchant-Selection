@@ -4,7 +4,7 @@
     </div>
     <div class="row">
         <select class="filter-input" id="type-filter" [(ngModel)]="typeFilter">
-            <option class="disabled" [ngValue]="null" disabled hidden>Filter by Category</option>
+            <option [ngValue]="null" disabled hidden>Filter by Category</option>
             <option *ngFor="let type of lookupLists.merchantTypes" [value]="type">{{ type }}</option>
         </select>
     </div>
@@ -12,7 +12,6 @@
         <input type="search" class="filter-input" id="merchant-search-text"
           [(ngModel)]="searchText" placeholder="Search">
     </div>
-
 
     <merchant-item
         *ngFor="let merchant of merchants | merchantTypeFilter: typeFilter:'type' | merchantNameFilter: searchText"

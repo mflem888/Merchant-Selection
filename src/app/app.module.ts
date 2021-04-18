@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MerchantSelectionComponent } from './components/merchant-selection/merchant-selection.component';
 import { MerchantComponent } from './components/merchant/merchant.component';
+import { MerchantSelectionController } from './controllers/merchant-selection-controller';
 import { MerchantNameFilterPipe } from './pipes/merchant-name-filter.pipe';
 import { MerchantTypeFilterPipe } from './pipes/merchant-type-filter.pipe';
 
@@ -18,7 +19,7 @@ const lookupLists = {
   declarations: [
     AppComponent,
     MerchantSelectionComponent,
-    MerchantComponent,
+    MerchantComponent,  
     MerchantNameFilterPipe,
     MerchantTypeFilterPipe
   ],
@@ -29,6 +30,7 @@ const lookupLists = {
     FormsModule
   ],
   providers: [
+    MerchantSelectionController,
     { provide: 'lookupListToken', useValue: lookupLists }
   ],
   bootstrap: [AppComponent]

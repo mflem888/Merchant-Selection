@@ -1,11 +1,16 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
 import { MerchantSelectionController } from 'src/app/controllers/merchant-selection-controller';
 import { Merchant } from 'src/app/dtos/merchant';
 import { MerchantNameFilterPipe } from 'src/app/pipes/merchant-name-filter.pipe';
 import { MerchantTypeFilterPipe } from 'src/app/pipes/merchant-type-filter.pipe';
+import { MerchantComponent } from '../merchant/merchant.component';
 
 import { MerchantSelectionComponent } from './merchant-selection.component';
 
@@ -50,23 +55,30 @@ describe('MerchantSelectionComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
+        BrowserModule,
         HttpClientModule,
-        FormsModule
+        AppRoutingModule,
+        FormsModule,
+        RouterTestingModule
       ],
       declarations: [ 
+        AppComponent,
         MerchantSelectionComponent,
+        MerchantComponent,  
         MerchantNameFilterPipe,
-        MerchantTypeFilterPipe 
+        MerchantTypeFilterPipe
       ],
       providers: [
         { provide: MerchantSelectionController, value: mockController },
         { provide: 'lookupListToken', useValue: lookupLists }
       ]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(MerchantSelectionComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -75,7 +87,7 @@ describe('MerchantSelectionComponent', () => {
   
   it('should load list of merchants', () => {
     const merchants: Merchant[] = testData;
-    mockController.getMerchants.and.returnValue(of(testData));
+    mockController.getMerchants.and.returnValue(of(merchants));
     fixture.detectChanges();
 
     expect(mockController.getMerchants).toHaveBeenCalled();

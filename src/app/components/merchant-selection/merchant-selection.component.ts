@@ -21,7 +21,7 @@ export class MerchantSelectionComponent implements OnInit {
     this.getMerchants();
   }
 
-  private getMerchants(): void{
+  getMerchants(): void{
     this.merchantController.getMerchants()
     .subscribe(merchants => {
         this.merchants = merchants;
