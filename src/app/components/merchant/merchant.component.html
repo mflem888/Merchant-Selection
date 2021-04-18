@@ -1,0 +1,12 @@
+
+
+<div>
+    <img class="image" [src]="merchant.image" viewBox="0 0 24 24"/>
+</div>
+<div class="merchant-details">
+    <p>{{ merchant.name }}</p>
+    <p>{{ merchant.minAmount | currency :'CAD':'symbol-narrow': '1.0-0' }} - {{ merchant.maxAmount | currency :'CAD':'symbol-narrow': '1.0-0' }}</p>
+    <a class="website" [href]="merchant.website">
+        visit website
+    </a>
+</div>
