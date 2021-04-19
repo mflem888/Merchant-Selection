@@ -88,11 +88,12 @@ describe('MerchantSelectionComponent', () => {
   it('should load list of merchants', () => {
     const merchants: Merchant[] = testData;
     mockController.getMerchants.and.returnValue(of(merchants));
-    fixture.detectChanges();
-
-    expect(mockController.getMerchants).toHaveBeenCalled();
-    expect(component.merchants).toEqual(merchants);
-    expect(component.merchants.length).toEqual(3);
+    
+    fixture.whenStable().then(() => {
+      expect(mockController.getMerchants).toHaveBeenCalled();
+      expect(component.merchants).toEqual(merchants);
+      expect(component.merchants.length).toEqual(3);
+    });
   });
 
   it('should render title', () => {
