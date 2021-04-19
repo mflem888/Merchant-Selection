@@ -74,10 +74,17 @@ describe('MerchantTypeFilterPipe', () => {
     expect(result).toEqual([]);
   });
 
-  it('filter on nothing', () => {
+  it('filter on no type', () => {
     const pipe = new MerchantTypeFilterPipe();
     const result = pipe.transform(testData, null);
 
     expect(result).toEqual(testData);
+  });
+
+  it('filter on empty list', () => {
+    const pipe = new MerchantTypeFilterPipe();
+    const result = pipe.transform([], "Drink");
+
+    expect(result).toEqual([]);
   });
 });
