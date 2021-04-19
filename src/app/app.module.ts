@@ -10,6 +10,7 @@ import { MerchantComponent } from './components/merchant/merchant.component';
 import { MerchantSelectionController } from './controllers/merchant-selection-controller';
 import { MerchantNameFilterPipe } from './pipes/merchant-name-filter.pipe';
 import { MerchantTypeFilterPipe } from './pipes/merchant-type-filter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const lookupLists = {
   merchantTypes: ["Guusto Card", "Coffee", "Drink"]
@@ -27,7 +28,8 @@ const lookupLists = {
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     MerchantSelectionController,

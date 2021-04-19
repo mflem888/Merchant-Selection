@@ -1,15 +1,15 @@
 <div class="content">
-    <div class="row title">
+    <div class="title">
         <span>Select a Merchant</span>
     </div>
-    <div class="row">
-        <select class="filter-input" id="type-filter" [(ngModel)]="typeFilter">
+    <div>
+        <select class="my-3 filter-input" id="type-filter" [(ngModel)]="typeFilter">
             <option [ngValue]="null" disabled hidden>Filter by Category</option>
             <option *ngFor="let type of lookupLists.merchantTypes" [value]="type">{{ type }}</option>
         </select>
     </div>
-    <div class="row">
-        <input type="search" class="filter-input" id="merchant-search-text"
+    <div>
+        <input type="search" class="mb-3 filter-input" id="merchant-search-text"
           [(ngModel)]="searchText" placeholder="Search">
     </div>
 
