@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MerchantSelectionController } from 'src/app/controllers/merchant-selection-controller';
 import { Merchant } from 'src/app/dtos/merchant';
-import { MerchantService } from 'src/app/services/merchant.service';
+import { lookupListsToken } from 'src/app/providers/lookup-list-token';
 
 @Component({
   selector: 'merchant-selection',
@@ -15,7 +15,7 @@ export class MerchantSelectionComponent implements OnInit {
 
   constructor(
     private merchantController: MerchantSelectionController,
-    @Inject('lookupListToken') public lookupLists) { }
+    @Inject(lookupListsToken) public lookupLists) { }
 
   ngOnInit(): void {
     this.getMerchants();

@@ -11,10 +11,7 @@ import { MerchantSelectionController } from './controllers/merchant-selection-co
 import { MerchantNameFilterPipe } from './pipes/merchant-name-filter.pipe';
 import { MerchantTypeFilterPipe } from './pipes/merchant-type-filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-const lookupLists = {
-  merchantTypes: ["Guusto Card", "Coffee", "Drink"]
-};
+import { lookupLists, lookupListsToken } from './providers/lookup-list-token';
 
 @NgModule({
   declarations: [
@@ -33,7 +30,7 @@ const lookupLists = {
   ],
   providers: [
     MerchantSelectionController,
-    { provide: 'lookupListToken', useValue: lookupLists }
+    { provide: lookupListsToken, useValue: lookupLists }
   ],
   bootstrap: [AppComponent]
 })

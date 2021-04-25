@@ -10,13 +10,10 @@ import { MerchantSelectionController } from 'src/app/controllers/merchant-select
 import { Merchant } from 'src/app/dtos/merchant';
 import { MerchantNameFilterPipe } from 'src/app/pipes/merchant-name-filter.pipe';
 import { MerchantTypeFilterPipe } from 'src/app/pipes/merchant-type-filter.pipe';
+import { lookupLists, lookupListsToken } from 'src/app/providers/lookup-list-token';
 import { MerchantComponent } from '../merchant/merchant.component';
 
 import { MerchantSelectionComponent } from './merchant-selection.component';
-
-const lookupLists = {
-  merchantTypes: ["Guusto Card", "Coffee", "Drink"]
-};
 
 describe('MerchantSelectionComponent', () => {
   let component: MerchantSelectionComponent;
@@ -70,7 +67,7 @@ describe('MerchantSelectionComponent', () => {
       ],
       providers: [
         { provide: MerchantSelectionController, value: mockController },
-        { provide: 'lookupListToken', useValue: lookupLists }
+        { provide: lookupListsToken, useValue: lookupLists }
       ]
     }).compileComponents();
   });
@@ -88,7 +85,7 @@ describe('MerchantSelectionComponent', () => {
   it('should load list of merchants', () => {
     const merchants: Merchant[] = testData;
     mockController.getMerchants.and.returnValue(of(merchants));
-    
+
     fixture.whenStable().then(() => {
       expect(mockController.getMerchants).toHaveBeenCalled();
       expect(component.merchants).toEqual(merchants);
