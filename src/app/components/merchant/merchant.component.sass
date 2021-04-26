@@ -1,8 +1,21 @@
 :host 
   display: flex
   flex-direction: row
-  background-color: #ecf3fc
+  background-color: white
   padding: 10px
+  border-bottom-style: solid
+  border-color: #e2e2e2
+  border-bottom-width: thin
+  border-radius: 4px
+
+:host-context(.type-card)
+    background-color: #f1e9ff
+
+:host-context(.type-drink)
+    background-color: #ebf4ff
+
+:host-context(.type-coffee)
+    background-color: #ffe9e9 
 
 .image
     width: 100%
